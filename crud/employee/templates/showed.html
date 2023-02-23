@@ -1,0 +1,60 @@
+{% load static %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Record</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% bootstrap_css %}
+</head>
+
+<body>
+    <div class="container my-5">
+        <div class="mb-4">
+            <a href="/show" style="margin-right: 20px; font-weight: 600; font-size: 20px;">Employee</a>
+            <a href="/showed" style="margin-right: 20px; font-weight: 600; font-size: 20px;">Education</a>
+            <a href="/showex" style="margin-right: 20px; font-weight: 600; font-size: 20px;">Experience</a>
+            <a href="/show-image" style="margin-right: 20px; font-weight: 600; font-size: 20px;">Picture</a>
+        </div>
+        <h1 class="mb-4">Education Employee</h1>
+        <table class="table table-bordered table-dark">
+            <thead>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Education ID</th>
+                    <th>School Name</th>
+                    <th>Major</th>
+                    <th>Year Entry</th>
+                    <th>Year Graduation</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for education in educations %}
+                <tr>
+                    <td>{{education.eid}}</td>
+                    <td>{{education.edid}}</td>
+                    <td>{{education.edschoolname}}</td>
+                    <td>{{education.edmajor}}</td>
+                    <td>{{education.edyearentry}}</td>
+                    <td>{{education.edyeargraduation}}</td>
+                    <td>
+                        <a href="/edit/ed/{{education.id}}" class="btn btn-warning text-white">Edit</a>
+                        <a href="/delete/ed/{{education.id}}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <a href="/ed" class="btn btn-primary text-white">Add New Education</a>
+    </div>
+    {% bootstrap_javascript %}
+</body>
+
+</html>

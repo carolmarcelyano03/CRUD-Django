@@ -1,0 +1,70 @@
+{% load static %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% bootstrap_css %}
+</head>
+
+<body>
+    <div class="container my-5">
+        <form method="POST" action="/upex/{{experience.id}}">
+            {% csrf_token %}
+            <div>
+                <br>
+                <p>
+                    <h3>Update Details Experience</h3>
+                </p>
+            </div>
+            <div>
+                <p>Employee ID:</p>
+                <div>
+                    <input type="text" name="eid" value="{{experience.eid_id}}" />
+                </div>
+            </div>
+            <div>
+                <p>Experience ID:</p>
+                <div>
+                    <input type="text" name="exid" value="{{experience.exid}}" />
+                </div>
+            </div>
+            <div>
+                <p>Company :</p>
+                <div>
+                    <input type="text" name="company" value="{{experience.company}}" />
+                </div>
+            </div>
+            <div>
+                <p>Position :</p>
+                <div>
+                    <input type="text" name="position" value="{{experience.position}}" />
+                </div>
+            </div>
+            <div>
+                <p>Year:</p>
+                <div>
+                    <input type="date" name="year" value="{{experience.year}}" />
+                </div>
+            </div>
+            <div>
+                <p>Information :</p>
+                <div>
+                    <input type="text" name="information" value="{{experience.information}}" />
+                </div>
+            </div>
+            <div>
+                <br>
+                <button type="submit" class="btn btn-success">Update</button>
+            </div>
+        </form>
+    </div>
+    {% bootstrap_javascript %}
+</body>
+
+</html>

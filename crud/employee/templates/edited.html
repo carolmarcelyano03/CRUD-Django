@@ -1,0 +1,70 @@
+{% load static %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% bootstrap_css %}
+</head>
+
+<body>
+    <div class="container my-5">
+        <form method="POST" action="/update-ed/{{education.id}}">
+            {% csrf_token %}
+            <div>
+                <br>
+                <p>
+                    <h3>Update Details Education</h3>
+                </p>
+            </div>
+            <div>
+                <p>Employee ID:</p>
+                <div>
+                    <input type="text" name="eid" value="{{education.eid_id}}" />
+                </div>
+            </div>
+            <div>
+                <p>Education ID:</p>
+                <div>
+                    <input type="text" name="edid" value="{{education.edid}}" />
+                </div>
+            </div>
+            <div>
+                <p>School Name:</p>
+                <div>
+                    <input type="text" name="edschoolname" value="{{education.edschoolname}}" />
+                </div>
+            </div>
+            <div>
+                <p>Major :</p>
+                <div>
+                    <input type="text" name="edmajor" value="{{education.edmajor}}" />
+                </div>
+            </div>
+            <div>
+                <p>Year Entry:</p>
+                <div>
+                    <input type="date" name="edyearentry" value="{{education.edyearentry}}" />
+                </div>
+            </div>
+            <div>
+                <p>Year Graduation:</p>
+                <div>
+                    <input type="date" name="edyeargraduation" value="{{education.edyeargraduation}}" />
+                </div>
+            </div>
+            <div>
+                <br>
+                <button type="submit" class="btn btn-success">Update</button>
+            </div>
+        </form>
+    </div>
+    {% bootstrap_javascript %}
+</body>
+
+</html>

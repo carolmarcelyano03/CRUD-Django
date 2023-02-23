@@ -1,0 +1,56 @@
+{% load static %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Record</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% bootstrap_css %}
+</head>
+
+<body>
+    <div class="container my-5">
+        <div class="mb-4">
+            <a href="/show" style="margin-right: 20px; font-weight: 600; font-size: 20px;">Employee</a>
+            <a href="/showed" style="margin-right: 20px; font-weight: 600; font-size: 20px;">Education</a>
+            <a href="/showex" style="margin-right: 20px; font-weight: 600; font-size: 20px;">Experience</a>
+            <a href="/show-image" style="margin-right: 20px; font-weight: 600; font-size: 20px;">Picture</a>
+        </div>
+        <h1 class="mb-4">Employee</h1>
+        <table class="table table-bordered table-dark">
+            <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Employee Name</th>
+                    <th>Employee Address</th>
+                    <th>Employee KTP ID</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in employees %}
+                <tr>
+                    <td>{{ employee.eid }}</td>
+                    <td>{{employee.ename}}</td>
+                    <td>{{employee.eaddress}}</td>
+                    <td>{{employee.ektpid}}</td>
+                    <td>
+                        <a href="/edit/{{ employee.id }}" class="btn btn-warning text-white">Edit</a>
+                        <a href="/delete/{{employee.id}}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <a href="/emp" class="btn btn-primary text-white">Add New Employee</a>
+    </div>
+    {% bootstrap_javascript %}
+</body>
+
+</html>
